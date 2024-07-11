@@ -20,6 +20,8 @@ public class RunController {
         return runRepository.findAll();
     };
 
+
+    //get
     @GetMapping("/{id}")
         Run findById(@PathVariable Integer id){
         Optional<Run> run = runRepository.findById(id);
@@ -35,4 +37,19 @@ public class RunController {
     void create(@RequestBody Run run){
         runRepository.create(run);
     }
+
+    //put
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/{id}")
+    void update(@RequestBody Run run, @PathVariable Integer id){
+        runRepository.update(run, id);
+    }
+
+    //delete
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    void delete(@PathVariable Integer id){
+        runRepository.delete(id);
+    }
+
 }
